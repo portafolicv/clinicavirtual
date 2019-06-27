@@ -1,0 +1,133 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Custom css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+    <!-- Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    
+    <link rel="manifest" href="{% static 'json/manifest.json' %}">
+
+    <title>Mi Clínica</title>
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <section class="container">
+            <a class="navbar-brand" href="">Mi Clínica</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="btn btn-light">Ingresar</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </nav>
+
+    <div class="header-landing d-flex align-items-center mb-5">
+        <section class="container">
+            <div class="row text-white">
+                <div class="col-md-12">
+                    <h1><b>Bienvenido a Mi Clínica</b></h1>
+                </div>
+            </div>
+            <div>
+                <h5><b>Plataforma de atención nutricional y gestión de dietas</b></h5>
+            </div>
+        </section>
+    </div>
+
+    <section class="container mb-3">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Bienvenido</h3>
+                <p>Bienvenido a la plataforma de gestión y atención nutricional. Aquí podra mantener tu agenda de pacientes 
+                ademas de poder generar fichas clinicas, ademas de poder crear minutas y recetas a la medida de cada uno de tus paciente.</p>
+            </div>
+            <div class="col-md-6">
+                <h3>Sobre nosotros</h3>
+                <p>Nuestra meta es poder facilitar la labor de profesionales independientes en cuanto a gestion de pacientes, quienes buscan
+                    una herramienta facil, rapida y asequible para iniciar su trabajo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h6>Visita nuestras redes sociales</h6>
+                <ul class="list-unstyled d-flex justify-content-between">
+                    <li class="list-inline-item">
+                        <a href="#" class="btn-social">
+                            <i class="fab fa-facebook-square fa-3x"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="btn-social">
+                            <i class="fab fa-twitter-square fa-3x"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="btn-social">
+                            <i class="fab fa-instagram fa-3x"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+    <script>
+        if('serviceWorker'in navigator){
+          window.addEventListener('load',function(){
+          navigator.serviceWorker.register('/serviceworker.js')
+          .then(reg=>console.log('Registro de serviceWorker exitoso',reg))
+          .catch(err=>console.warn('Error al tratar de registrar el serviceWorker',err))
+        })
+        }
+    </script>
+</body>
+
+</html>

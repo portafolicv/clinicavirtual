@@ -1,0 +1,86 @@
+{% extends '_base.html' %} {% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;&nbsp;Buscar Paciente</h1>
+
+<!--div class="row">
+    <div class="col-xs-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Buscar paciente</h3>
+            </div>
+            <div class="box-body">
+                <form role="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Buscar por nombre de paciente</label>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Ingrese nombre paciente">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat">Buscar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Buscar por RUN</label>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Ingrese RUN paciente">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat">Buscar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a type="button" class="btn btn-warning pull-right" href="/paciente/registro_paciente/">Registrar nuevo paciente</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div-->
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Información de paciente</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre completo</th>
+                        <th>RUN</th>
+                        <th>Previsión</th>
+                        <th>Estado Civil</th>
+                        <th>Ocupación</th>
+                    </tr>
+                    {% csrf_token %} {% if pacientes %} {% for paciente in pacientes %}
+                    <tr>
+                        <td>{{ paciente.id }}</td>
+                        <td>{{ paciente.nombre }} {{paciente.apellido_paterno}} {{paciente.apellido_materno}}</td>
+                        <td>{{ paciente.run }}</td>
+                        <td>{{ paciente.prevision }}</td>
+                        <td>{{ paciente.estado }}</td>
+                        <td>{{ paciente.ocupacion }}</td>
+                    </tr>
+                    {% endfor %} {% else %}
+                    <td>sin datos</td>
+                    {% endif %}
+                </table>
+            </div>
+            <div class="box-footer clearfix">
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-warning ">Actualizar información</button>
+                    <button type="button" class="btn btn-danger ">Eliminar paciente</button>
+                </div>
+            </div>
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
+
+
+{% endblock %}

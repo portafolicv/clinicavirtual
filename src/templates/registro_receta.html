@@ -1,0 +1,37 @@
+{% extends '_base.html' %} {% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-check"></i>&nbsp;&nbsp;&nbsp;Registro de Recetas</h1>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Ingresar nueva receta</h3>
+            </div>
+            <div class="box-body">
+                <form action='.' method="POST">{% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Nombre receta</label> {{ form_receta.nombre }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Tipo de servicio</label> {{ form_receta.tipoServicio }}
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-danger pull-right">Guardar receta</button>
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-file"></i>&nbsp;&nbsp;&nbsp;Ficha clinica - Antecedentes actuales y analisis de caso</h1>
+
+
+<div class="box-body">
+    {% include '_datos_previos_paciente.html' %}
+    <form action='.' method="POST">{% csrf_token %}
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Antecedentes actuales</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>IMC Actual</label>
+                                    {{ form_datos_actuales.imc }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Estado nutricional</label>
+                                    {{ form_datos_actuales.estado_nutricional }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Peso actual</label>
+                                    {{ form_datos_actuales.peso_actual }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Analisis de caso</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label>Comentarios</label>
+                                    {{ form_datos_actuales.comentarios }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label>Objetivos</label>
+                                    {{ form_datos_actuales.objetivos }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label>Diagnostico nutricional</label>
+                                    {{ form_datos_actuales.diagnostico }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label>Observaciones</label>
+                                    {{ form_datos_actuales.observaciones }}
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" value="save" name="btn_crear_ficha" class="btn btn-warning pull-right">Crear ficha clínica</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>    
+{% endblock %}

@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Buscar paciente</h3>
+
+                <div class="box-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre de paciente</th>
+                        <th>Hora agendada</th>
+                        <th>Fecha</th>
+                        <th>Se presenta a consulta</th>
+                    </tr>
+                    {% for control in lista_controles %}
+                    <tr>
+                        <td>{{ control.id }}</td>
+                        <td>{{ control.paciente }}</td>
+                        <td>{{ control.horaControl }}</td>
+                        <td>{{ control.fechaControl }}</td>
+                        <td>
+                            <div class="form-group">
+                                <label>
+                                    {% if control.asiste %}Asiste{% else %}No asiste{% endif %}
+                                </label>
+                            </div>
+                        </td>
+                        <td><button type="menu" class="btn btn-warning btn-xs pull-right">Modificar</button></td>
+                        <td><button type="menu" class="btn btn-danger btn-xs pull-right">Eliminar</button></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

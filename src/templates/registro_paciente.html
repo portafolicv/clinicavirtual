@@ -1,0 +1,30 @@
+{% extends '_base.html' %} 
+
+{% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;Registrar Paciente</h1>
+
+<form action='.' method="POST">{% csrf_token %} 
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Nombre de usuario</label> 
+                            {{ user_form.username }}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Correo electrónico</label> 
+                            {{ user_form.email }}
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" value="save" class="btn btn-warning pull-right">Continuar registro</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

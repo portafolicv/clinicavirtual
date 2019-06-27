@@ -1,0 +1,110 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;&nbsp;Mi avance</h1>
+
+<div class="box-body">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Mis antecedentes iniciales</h3>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Estatura: {{ estatura }}</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Mi IMC incial (kg/mt2): {{ imc }}</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Mi estado nutricional: {{ estado_nutricional }}</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Mi peso inicial: {{ peso }}</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Evolución de mi peso</h3>
+                </div>
+                <div class="box-body">
+                    <div id="chart_peso"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Evolución de mi IMC</h3>
+                </div>
+                <div class="box-body">
+                    <div id="chart_imc"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% autoescape off %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+    // Grafico IMC.
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        
+    var data = new google.visualization.DataTable();
+    var i = 1;
+    data.addColumn('string', 'Topping');
+    data.addColumn('number', 'IMC');
+    data.addRows([
+        ['Inicial', {{ imc_chart }}],
+        {% for imc_ficha in imc_fichas %}
+        ['Eval '+ (i++), {{ imc_ficha }}],
+        {% endfor %}
+    ]);
+
+    var options = {'title':'Evolución de mi indice de masa muscular IMC','height':300};
+
+    var chart = new google.visualization.LineChart(document.getElementById('chart_imc'));
+    chart.draw(data, options);
+    }    
+</script>
+<script type="text/javascript">
+    // Grafico Peso.
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+    var i = 1;
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Topping');
+    data.addColumn('number', 'Peso');
+    data.addRows([
+        ['Inicial', {{ peso_chart }}],
+        {% for peso_ficha in peso_fichas %}
+        ['Eval '+ (i++), {{ peso_ficha }}],
+        {% endfor %}
+    ]);
+
+    var options = {'title':'Evolución de mi peso', 'height':300};
+
+    var chart = new google.visualization.LineChart(document.getElementById('chart_peso'));
+    chart.draw(data, options);
+    }    
+</script>
+{% endautoescape %}
+{% endblock %}
+
+      

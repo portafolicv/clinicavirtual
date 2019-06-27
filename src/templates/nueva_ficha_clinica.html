@@ -1,0 +1,43 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-file"></i>&nbsp;&nbsp;&nbsp;Nueva ficha Clinica</h1>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Buscar paciente</h3>
+            </div>
+            <div class="box-body">
+                <form action='.' method="POST">{% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Buscar por nombre de paciente</label>
+                                <div class="input-group input-group-sm">
+                                    {{ form_ficha.paciente }}
+                                    <span class="input-group-btn">
+                                        <button type="submit" value="save" class="btn btn-info btn-flat">Crear ficha</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Buscar por RUN</label>
+                                <div class="input-group input-group-sm">
+                                    <!--{{ form_ficha.paciente }}-->
+                                    <span class="input-group-btn">
+                                        <a type="button" class="btn btn-info btn-flat">Crear ficha</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

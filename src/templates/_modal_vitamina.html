@@ -1,0 +1,37 @@
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="box box-danger">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Ingresar nueva vitamina</h3>
+                        </div>
+                        <div class="box-body">
+                            <form action='.' method="POST">{% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Nombre vitamina</label> {{ form_vitamina.nombre }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Unidad de medida</label> {{ form_vitamina.unidad_medida}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" value="save" name="btn_vitamina" class="btn btn-danger pull-right">Guardar vitamina</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

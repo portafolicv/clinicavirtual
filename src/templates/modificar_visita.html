@@ -1,0 +1,58 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;&nbsp;Modificar hora de control</h1>
+
+{% include '_datagrid_pacientes.html' %}
+
+<div class="row">
+<div class="col-md-6">
+    <div class="box box-danger">
+        <div class="box-header with-border">
+            <h3 class="box-title">Ingresar nueva fecha de atención</h3>
+        </div>
+        <div class="box-body">
+            <form role="form">
+                <div class="form-group">
+                    <label>Seleccione nueva fecha de consulta</label>
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control pull-right" id="datepicker">
+                    </div>
+                </div>
+            </form>
+            <div class="bootstrap-timepicker">
+                <div class="form-group">
+                    <label>Ingrese nueva hora de antención</label>
+                        <div class="input-group">
+                        <input type="text" class="form-control timepicker">
+                        <div class="input-group-addon">
+                            <i class="fa fa-clock-o"></i>
+                        </div>
+                    </div>
+                    <!-- /.input group -->
+                </div>
+                <!-- /.form group -->
+            </div>
+            <button type="button" class="btn btn-block btn-info">Modificar</button>
+        </div>
+    </div>
+</div>
+    <div class="col-md-6">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Calendario</h3>
+            </div>
+            <div class="box-body no-padding">
+                <!-- THE CALENDAR -->
+                <div id="calendar">
+    
+                </div>
+            </div>
+        <!-- /.box-body -->
+        </div>                
+    </div>
+</div>
+{% endblock %}

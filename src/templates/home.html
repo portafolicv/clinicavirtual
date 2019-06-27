@@ -1,0 +1,6 @@
+{% extends '_base.html' %} {% block content %} {% if user.is_authenticated %}
+<h1>&nbsp;<i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;&nbsp;Bienvenido(a) {{request.user.get_short_name}}</h1>
+{% else %}
+<h2>No ha ingresado al sistema, por favor inicie sesión <a href="{% url 'login' %}">aquí</a>.</h2>
+
+{% endif %} {% endblock %}

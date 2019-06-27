@@ -1,0 +1,319 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-file"></i>&nbsp;&nbsp;&nbsp;Ficha clinica - Habitos, Indicadores y Antecedentes</h1>
+
+
+<div class="box-body">
+    {% include '_datos_previos_paciente.html' %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Habitos del paciente</h3>
+                </div>
+                <div class="box-body">
+                    <form action=" " method="POST" name="registrar_habitos">{% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Indique habitos presentes</label>
+                                    <div class="input-group input-group-md">
+                                        {{ form_habitos_actuales.habito }}
+                                        <span class="input-group-btn">
+                                            <button type="submit" value="save" name="btn_habitos" class="btn btn-danger btn-flat">Agregar</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal"
+                            data-target="#modal_habitos">¿el dato no esta en la lista?</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Habitos presentes en el paciente</h3>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {% if habitosPac %}
+                                {% for habitoPac in habitosPac %}
+                                <ol value="{{ habitoPac.id }}">{{ habitoPac.habito }}</ol>
+                                {% endfor %}
+                                {% else %}
+                                <ol>sin datos</ol>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Indicadores bioquímicos</h3>
+                </div>
+                <div class="box-body">
+                    <form action=" " method="POST" name="registrar_ind_bioquimico">{% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Seleccione indicador bioquímico presente en paciente</label>
+                                    {{ form_ind_bioquimico_actual.indice }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Indique cantidad presente</label>
+                                    <div class="input-group input-group-md">
+                                        {{ form_ind_bioquimico_actual.niveles }}
+                                        <span class="input-group-btn">
+                                            <button type="submit" value="save" name="btn_indBioquimico" class="btn btn-danger btn-flat">Agregar</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal"
+                            data-target="#modal_ind_bioquimico">¿el dato no esta en la lista?</button>
+                </div>
+            </div>
+
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Indicadores clínicos</h3>
+                </div>
+                <div class="box-body">
+                    <form action=" " method="POST" name="registrar_ind_clinico">{% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Seleccione los indicadores clínicos presentes en el paciente</label>
+                                    {{ form_ind_clinico_actual.indice }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Indique cantidad presente</label>
+                                    <div class="input-group input-group-md">
+                                        {{ form_ind_clinico_actual.niveles }}
+                                        <span class="input-group-btn">
+                                            <button type="submit" value="save" name="btn_indClinico" class="btn btn-danger btn-flat">Agregar</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal"
+                            data-target="#modal_ind_clinico">¿el dato no esta en la lista?</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Indicadores presentes en el paciente</h3>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label>BIOQUÍMICOS</label>
+                                {% if indbiosPac %}
+                                {% for indbioPac in indbiosPac %}
+                                <ol value="{{ indbioPac.id }}">{{ indbioPac.indice }} {{indbioPac.niveles}}</ol>
+                                {% endfor %}
+                                {% else %}
+                                <ol>sin datos</ol>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label>CLÍNICOS</label>
+                                {% if indclinicosPac %}
+                                {% for indcliPac in indclinicosPac %}
+                                <ol value="{{ indcliPac.id }}">{{ indcliPac.indice }}{{ indcliPac.niveles }}</ol>
+                                {% endfor %}
+                                {% else %}
+                                <ol>sin datos</ol>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Antecedentes patológicos familiares</h3>
+                </div>
+                <div class="box-body">
+                    <form action=" " method="POST" name="registrar_pat_fam">{% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Indique patología presente</label>
+                                    <div class="input-group input-group-md">
+                                        {{ form_pat_familiar.patologia }}
+                                        <span class="input-group-btn">
+                                            <button type="submit" value="save" name="btn_pat_fam" class="btn btn-danger btn-flat">Agregar</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal"
+                            data-target="#modal_ant_patologico">¿el dato no esta en la lista?</button>
+                </div>
+            </div>
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Antecedentes patológicos personales</h3>
+                </div>
+                <div class="box-body">
+                    <form action=" " method="POST" name="registrar_pat_personal">{% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Indique patología presente</label>
+                                    <div class="input-group input-group-md">
+                                        {{ form_pat_personal.patologia }}
+                                        <span class="input-group-btn">
+                                            <button type="submit" value="save" name="btn_pat_per" class="btn btn-danger btn-flat">Agregar</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal"
+                            data-target="#modal_ant_patologico">¿el dato no esta en la lista?</button>
+                </div>
+            </div>
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Problemas actuales</h3>
+                </div>
+                <div class="box-body">
+                    <form action=" " method="POST" name="registrar_sintomas">{% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Indique síntomas</label>
+                                    <div class="input-group input-group-md">
+                                        {{ form_problemas_actuales.sintoma }}
+                                        <span class="input-group-btn">
+                                            <button type="submit" value="save" name="btn_sintomas" class="btn btn-danger btn-flat">Agregar</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal"
+                            data-target="#modal_probl_actual">¿el dato no esta en la lista?</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Informe de patologías de familiares y paciente</h3>
+                </div>
+                <div class="box-body">
+                    <form role="form">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label>PATOLOGÍAS FAMILIARES</label>
+                                {% if patologiasFam %}
+                                {% for patologiaFam in patologiasFam %}
+                                <ol value="{{ patologiaFam.id }}">{{ patologiaFam.patologia }}</ol>
+                                {% endfor %}
+                                {% else %}
+                                <ol>sin datos</ol>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label>PATOLOGÍAS DEL PACIENTE</label>
+                                {% if patologiasPac %}
+                                {% for patologiaPac in patologiasPac %}
+                                <ol value="{{ patologiaPac.id }}">{{ patologiaPac.patologia }}</ol>
+                                {% endfor %}
+                                {% else %}
+                                <ol>sin datos</ol>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label>SÍNTOMAS Y PROBLEMAS ACTUALES</label>
+                                {% if sintomasPac %}
+                                {% for sintomaPac in sintomasPac %}
+                                <ol value="{{ sintomaPac.id }}">{{ sintomaPac.sintoma }}</ol>
+                                {% endfor %}
+                                {% else %}
+                                <ol>sin datos</ol>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <form action="" method="get">
+                        <button type="submit" value="continuar" name="continuar" class="btn btn-warning btn-md pull-right">continuar formulario<i class="glyphicon glyphicon-chevron-right"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<!-- ventanas modales -->
+<div class="modal fade" id="modal_habitos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">">
+{% include '_modal_habitos.html' %}
+</div>
+<div class="modal fade" id="modal_ind_bioquimico" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">">
+{% include '_modal_ind_bioquimico.html' %}
+</div>
+<div class="modal fade" id="modal_ind_clinico" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">">
+{% include '_modal_ind_clinico.html' %}
+</div>
+<div class="modal fade" id="modal_ant_patologico" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">">
+{% include '_modal_ant_patologico.html' %}
+</div>
+<div class="modal fade" id="modal_probl_actual" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">">
+{% include '_modal_probl_actual.html' %}
+</div>
+{% endblock %}
+

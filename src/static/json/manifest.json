@@ -1,0 +1,38 @@
+{
+"name": "Manifest_Clinica",
+"short_name": "MiClinica",
+"icons":[
+    {
+        "src": "/static/icons/icon.png",
+        "sizes": "48x48",
+        "type": "image/png"
+    }, {
+        "src": "/static/icons/icon.png",
+        "sizes": "72x72",
+        "type": "image/png"
+    }, {
+        "src": "/static/icons/icon.png",
+        "sizes": "96x96",
+        "type": "image/png"
+    }, {
+        "src": "/static/icons/icon.png",
+        "sizes": "144x144",
+        "type": "image/png"
+    }, {
+        "src": "/static/icons/icon.png",
+        "sizes": "168x168",
+        "type": "image/png"
+    }, {
+        "src": "/static/icons/icon.png",
+        "sizes": "192x192",
+        "type": "image/png"
+    }
+],
+"start_url": "/myapp/",
+"display": "standalone",
+"background_color": "red",
+"theme_color":"red",
+"description": "Apicación para pacientes",
+"orientation": "portrait",
+"theme-color": "red"
+}

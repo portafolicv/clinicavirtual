@@ -1,0 +1,77 @@
+{% extends '_base.html' %} {% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-check"></i>&nbsp;&nbsp;&nbsp;Edición de Minutas</h1>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Editar minuta</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label>Nombre minuta</label><br>{{minuta_edit.nombre}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Recetas que componen la minuta</h3>
+                    </div>
+                    <div class="box-body">
+                        <form action='.' method="POST">{% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Seleccione receta</label> {{form_recetaenminuta.receta}}
+                                        <button type="button" class="btn btn-default btn-xs pull-right">Incluir nueva receta</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="input-group-btn">
+                                <button type="submit" name="" class="btn btn-danger btn-flat">Incluir receta a minuta</button>
+                            </span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="box box-danger">
+            <div class="box-header">
+                <h3 class="box-title">Minuta</h3>
+            </div>
+            <div class="box-body table-responsive">
+                <table class="table table-hover">
+                    <tr>
+                        <th>ID Receta</th>
+                        <th>Nombre receta</th>
+                        <th>Servicio</th>
+                    </tr>
+                    {% for receta in list_recetaminuta %}
+                    <tr>
+                        <th>{{receta.receta.id}}</th>
+                        <th>{{receta.receta.nombre}}</th>
+                        <th>{{receta.receta.tipoServicio}}</th>
+                        <th><a class="btn btn-default" href="{% url 'remover_recetaenminuta' id_recetaenminuta=receta.id id_minuta=minuta_edit.id %}"><span class="glyphicon glyphicon-remove"></span></a></th>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

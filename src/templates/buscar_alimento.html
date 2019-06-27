@@ -1,0 +1,89 @@
+{% extends '_base.html' %} {% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;Información de alimento</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Buscar almiento</h3>
+            </div>
+            <div class="box-body">
+                <form role="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Buscar por codigo</label>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Ingrese codigo alimento">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat">Buscar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Buscar por nombre</label>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Ingrese nombre alimento">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat">Buscar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Lista de alimentos</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>Alimento</th>
+                                        <th>Perecible</th>
+                                        <th>Precio</th>
+                                        <th>Unidad de medida</th>
+                                        <th>Envase de venta</th>
+                                        <th>Peso del envase</th>
+                                        <th>Editar</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                    {% for al in alimentos %}
+                                    <tr>
+                                        <th>{{al.nombre}}</th>
+                                        {% if al.perecible %}
+                                        <th><span class="glyphicon glyphicon-ok-circle"></span></th>
+                                        {% else %}
+                                        <th><span class="glyphicon glyphicon-ban-circle"></span></th>
+                                        {% endif %}
+                                        <th>{{al.precio}}</th>
+                                        <th>{{al.unidad_medida}}</th>
+                                        <th>{{al.envase}}</th>
+                                        <th>{{al.peso_envase}}</th>
+                                        <th><a class="btn btn-default" href="{% url 'editar_alimento' id_al=al.id %}"><span class="glyphicon glyphicon-edit"></span></a></th>
+                                        <th><a class="btn btn-default" href="{% url 'remover_alimento' id_al=al.id %}"><span class="glyphicon glyphicon-remove"></span></a></th>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,214 @@
+{% extends '_base.html' %} {% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-check"></i>&nbsp;&nbsp;&nbsp;Registro de Alimentos</h1>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Editar Compuestos del alimento</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Nombre alimento </label> {{ al_edit }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Agregar Macronutriente</h3>
+            </div>
+            <div class="box-body">
+                <form action='.' method="POST">{% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Seleccione tipo de lípido</label> {{ form_lipidoAlimento.lipido}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Indique cantidad presente</label>
+                                <div class="input-group input-group-md">
+                                    {{ form_lipidoAlimento.cantidad }}
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="btn_lipidoAlimento" class="btn btn-danger btn-flat">Agregar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal" data-target="#modal_lipido">Incluír nuevo lípido</button>
+                </form>
+                <form action='.' method="POST">{% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Indique cantidad de proteína presente</label>
+                                <div class="input-group input-group-md">
+                                    {{ form_proteinaAlimento.cantidad }}
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="btn_proteinaAlimento" class="btn btn-danger btn-flat">Agregar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form action='.' method="POST">{% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Indique cantidad de hidratos de carbono presente</label>
+                                <div class="input-group input-group-md">
+                                    {{ form_hidratoCAlimento.cantidad }}
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="btn_hidratoAlimento" class="btn btn-danger btn-flat">Agregar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Agregar Micronutriente</h3>
+            </div>
+            <div class="box-body">
+                <form action='.' method="POST">{% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Seleccione vitamina</label>{{ form_vitaminaAlimento.vitamina }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Indique cantidad presente</label>
+                                <div class="input-group input-group-md">
+                                    {{ form_vitaminaAlimento.cantidad }}
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="btn_vitaminaAlimento" class="btn btn-danger btn-flat">Agregar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal" data-target="#modal_vitamina">Incluír nueva vitamina</button>
+                </form>
+                <form action='.' method="POST">{% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Seleccione mineral</label> {{ form_mineralAlimento.mineral }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Indique cantidad presente</label>
+                                <div class="input-group input-group-md">
+                                    {{ form_mineralAlimento.cantidad }}
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="btn_mineralAlimento" class="btn btn-danger btn-flat">Agregar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal" data-target="#modal_mineral">Incluír nuevo mineral</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Compuestos del alimento</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>Compuesto</th>
+                                        <th>Cantidad</th>
+                                        <th>Eliminar componente</th>
+                                    </tr>
+                                    {% for va in qs_vit_al %}
+                                    <tr>
+                                        <th>{{va.vitamina}}</th>
+                                        <th>{{va.cantidad}}</th>
+                                        <th><a class="btn btn-default" href="{% url 'remover_componente' id_al=al_edit.id tipo=0 id_comp=va.id %}"><span class="glyphicon glyphicon-remove"></span></a></th>
+                                    </tr>
+                                    {% endfor %} {% for ha in qs_hid_al %}
+                                    <tr>
+                                        <th>{{ha.hidratoC}}</th>
+                                        <th>{{ha.cantidad}}</th>
+                                        <th><a class="btn btn-default" href="{% url 'remover_componente' id_al=al_edit.id tipo=1 id_comp=ha.id %}"><span class="glyphicon glyphicon-remove"></span></a></th>
+                                    </tr>
+                                    {% endfor %} {% for pa in qs_pro_al %}
+                                    <tr>
+                                        <th>{{pa.proteina}}</th>
+                                        <th>{{pa.cantidad}}</th>
+                                        <th><a class="btn btn-default" href="{% url 'remover_componente' id_al=al_edit.id tipo=2 id_comp=pa.id %}"><span class="glyphicon glyphicon-remove"></span></a></th>
+                                    </tr>
+                                    {% endfor %} {% for la in qs_lip_al %}
+                                    <tr>
+                                        <th>{{la.lipido}}</th>
+                                        <th>{{la.cantidad}}</th>
+                                        <th><a class="btn btn-default" href="{% url 'remover_componente' id_al=al_edit.id tipo=3 id_comp=la.id %}"><span class="glyphicon glyphicon-remove"></span></a></th>
+                                    </tr>
+                                    {% endfor %} {% for ma in qs_min_al %}
+                                    <tr>
+                                        <th>{{ma.mineral}}</th>
+                                        <th>{{ma.cantidad}}</th>
+                                        <th><a class="btn btn-default" href="{% url 'remover_componente' id_al=al_edit.id tipo=4 id_comp=ma.id %}"><span class="glyphicon glyphicon-remove"></span></a></th>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- ventanas modales -->
+<div class="modal fade" id="modal_lipido" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">"> {% include '_modal_lipido.html' %}
+</div>
+<div class="modal fade" id="modal_vitamina" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">"> {% include '_modal_vitamina.html' %}
+</div>
+<div class="modal fade" id="modal_mineral" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">"> {% include '_modal_mineral.html' %}
+</div>
+
+{% endblock %}

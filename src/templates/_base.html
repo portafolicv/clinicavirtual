@@ -1,0 +1,39 @@
+{% extends 'adminlte/base.html' %} 
+{% load static %}
+
+<!--Agregar cualquier otro meta extra-->
+{% block meta %}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<link rel="manifest" href="{% static 'json/manifest.json' %}">
+
+{% endblock %}
+
+<!--Determiner el color del tema AdminLTE importado-->
+{% block body_class %} skin-red {% endblock %}
+
+<!--Persionaliza el nombre de sitio-->
+{% block title_outer %}
+<title>{% block title %}{{ name }}{% endblock %}</title>
+{% endblock %}
+
+<!--Bloque ubicado en parte superior del block content para ubicar botones con opciones-->
+{% block content_header %}
+<section class="content-header">
+    <h1>
+        {% block page_name %}{% endblock %} {% block no_description %}
+        <small>{% block page_description %}{% endblock %}</small> {% endblock %}
+    </h1>
+    {% block breadcrumbs %} {# Breadcrumb implementation left to developers #} {% endblock %}
+
+
+</section>
+{% endblock %}
+
+<!--import de header personalizado-->
+{% block nav_header %} {% include '_main_header.html' %} {% endblock %}
+
+<!--import navbar personalizado-->
+{% block nav_sidebar %} {% include '_main_sidebar.html' %} {% endblock %}
+

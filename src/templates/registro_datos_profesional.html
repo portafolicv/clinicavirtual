@@ -1,0 +1,83 @@
+{% extends '_base.html' %} {% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;Registrar Profesional</h1>
+
+<form action='.' method="POST">{% csrf_token %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Antecedentes personales</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Nombre</label> {{ form_profesional.nombre }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Apellido paterno</label> {{ form_profesional.apellido_paterno }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Apellido materno</label> {{ form_profesional.apellido_materno }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>RUN paciente</label> {{ form_profesional.run }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Fecha de nacimiento</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    {{ form_profesional.fecha_nacimiento }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Domicilio</label> {{ form_profesional.domicilio }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Ciudad</label> {{ form_profesional.ciudad }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Telefono</label> {{ form_profesional.telefono }}
+                            </div>
+                        </div>
+                        {% if user.is_superuser or perms.Profesional.admin_permission %}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Es alumno</label> <input type="checkbox" name="cbx_es_alumno" id="cbx_es_alumno">
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+
+                    <button type="submit" value="save" class="btn btn-warning pull-right">Registrar datos del Profesional</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

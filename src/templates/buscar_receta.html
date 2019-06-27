@@ -1,0 +1,74 @@
+{% extends '_base.html' %} {% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;Buscar información de receta</h1>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Buscar receta</h3>
+            </div>
+            <div class="box-body">
+                <form role="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Buscar por codigo</label>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Ingrese codigo de receta">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat">Buscar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Buscar por nombre</label>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Ingrese nombre receta">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat">Buscar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box-body">
+    <form role="form">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <h3 class="box-title">Lista de recetas</h3>
+                    </div>
+                    <div class="box-body table-responsive">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre de receta</th>
+                                <th>Servicio</th>
+                            </tr>
+                            {% for receta in recetas %}
+                            <tr>
+                                <th>{{receta.id}}</th>
+                                <th>{{receta.nombre}}</th>
+                                <th>{{receta.tipoServicio}}</th>
+                                <th><a class="btn btn-default" href="{% url 'editar_receta' id_rc=receta.id %}"><span class="glyphicon glyphicon-edit"></span></a></th>
+                                <th><a class="btn btn-default" href="{% url 'remover_receta' id_rc=receta.id %}"><span class="glyphicon glyphicon-remove"></span></a></th>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+
+
+{% endblock %}

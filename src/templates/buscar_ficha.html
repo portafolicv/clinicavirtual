@@ -1,0 +1,78 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;&nbsp;Buscar ficha Clinica</h1>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Buscar paciente</h3>
+            </div>
+            <div class="box-body">
+                <form role="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Buscar por nombre de paciente</label>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Ingrese nombre paciente">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-danger btn-flat">Buscar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Buscar por RUN</label>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Ingrese RUN paciente">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-danger btn-flat">Buscar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Información de paciente</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre completo</th>
+                        <th>RUN</th>
+                        <th>Fecha de controles</th>
+                    </tr>
+                    <tr>
+                        <td>183</td>
+                        <td>John Doe</td>
+                        <td>10:50</td>
+                        <td>11-7-2014</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="box-footer clearfix">
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-warning ">Consultar ficha</button>
+                    <button type="button" class="btn btn-danger ">Eliminar ficha</button>
+                </div>
+            </div>
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+    
+
+{% endblock %}

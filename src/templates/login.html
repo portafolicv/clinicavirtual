@@ -1,0 +1,8 @@
+{% extends "adminlte/login.html" %} {% block form %}
+<form method="post">
+    {% csrf_token %} { user_form }}
+    <div>
+        <a href="{% url 'password_reset' %}">¿Olvido su contraseña?</a>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends '_base.html' %} {% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-check"></i>&nbsp;&nbsp;&nbsp;Registro de Alimentos</h1>
+
+<form action='.' method="POST">{% csrf_token %}
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Ingresar nuevo alimento</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Nombre alimento</label> {{ form_alimento.nombre }}
+                                <!--input class="form-control" type="text" placeholder="Ingrese nombre de alimento"-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--button type="submit" value="save" class="btn btn-danger pull-right">Guardar alimento</button-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Datos generales</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Precio</label> {{ form_alimento.precio }}
+                                <!--input class="form-control" type="text" placeholder="Ingrese nombre de alimento"-->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Unidad de medida</label> {{ form_alimento.unidad_medida }}
+                                <!--input class="form-control" type="text" placeholder="Kg - Lt - unidad"-->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Envase</label> {{ form_alimento.envase }}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Peso del envase</label> {{ form_alimento.peso_envase }}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Perecible</label> {{ form_alimento.perecible }}
+                            </div>
+                        </div>
+                     </div>
+                    <button type="submit" value="save" class="btn btn-danger pull-right">Guardar alimento</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

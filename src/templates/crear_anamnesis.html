@@ -1,0 +1,281 @@
+{% extends '_base.html' %} {% block content %}
+<h1>&nbsp;<i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;Nueva ficha de anamnesis</h1>
+
+<form action=" " method="POST" name="crear_anamnesis">{% csrf_token %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Datos previos de paciente</h3>
+                </div>
+                <div class="box-body">
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Paciente: {{ paciente_anamnesis }}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Sexo: {% if paciente_anamnesis.sexo %} Masculino {% else %} Femenino {% endif %}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Fecha de nacimiento: {{ paciente_anamnesis.fecha_nacimiento }}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Escolaridad: {{ paciente_anamnesis.escolaridad }}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Estado civil: Soltero</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Previsión: Isapre</label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Antecedentes iniciales</h3>
+                </div>
+                <div class="box-body">
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Edad</label> {{ form_AntInicial.edad }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Estatura</label> {{ form_AntInicial.estatura }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>IMC (kg/m2)</label> {{ form_AntInicial.imc }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Estado nutricional</label> {{ form_AntInicial.estado_nutricional }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Peso</label> {{ form_AntInicial.peso }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Sexo</label>
+                                <div class="form-group">
+                                    {{ form_AntInicial.sexo }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Ocupación</label> {{ form_AntInicial.ocupacion }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label>Motivo de la consulta</label> {{ form_AntInicial.motivo_consulta }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Antecedentes generales de salud</h3>
+                </div>
+                <div class="box-body">
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Enfermedades diagnosticadas</label>
+                                <div class="form-group">
+                                    {{ form_AntSalud.enferm_diagnosticada }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Cual</label> {{ form_AntSalud.desc_enfermedad }}
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Consume medicamentos</label>
+                                <div class="form-group">
+                                    {{ form_AntSalud.medicacion }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Cual</label> {{ form_AntSalud.desc_medicacion }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Habitos</h3>
+                </div>
+                <div class="box-body">
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Fuma</label>
+                                <div class="form-group">
+                                    {{ form_AntHabito.fuma }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Consume alcohol</label>
+                                <div class="form-group">
+                                    {{ form_AntHabito.bebe }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Consume drogas</label>
+                                <div class="form-group">
+                                    {{ form_AntHabito.usa_drogas }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Cual</label> {{ form_AntHabito.descrip_droga }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Antecedentes generales familiares</h3>
+                </div>
+                <div class="box-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Cantidad de integrantes de la familia</label> {{ form_AntFamiliar.cant_integrantes }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Situación economica</label> {{ form_AntFamiliar.situacion_econom }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label>Morbilidades familiares</label> {{ form_AntFamiliar.morbilidades }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Antecedentes generales de alimentación</h3>
+                </div>
+                <div class="box-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Liquidos que consume</label> {{ form_AntAlimenticios.liquidos }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Cuanto consume</label> {{ form_AntAlimenticios.cantidad_liquido }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Donde y como se alimenta</label> {{ form_AntAlimenticios.habitos_comida }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>¿Quien cocina en el hogar?</label> {{ form_AntAlimenticios.encargado_cocina }}
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>¿Realiza actividad fisica?</label>
+                                <div class="form-group">
+                                    {{ form_AntAlimenticios.actividad_fisica }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>¿Cual?</label> {{ form_AntAlimenticios.desc_act_fisica }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>¿Cuanto tiempo?</label> {{ form_AntAlimenticios.tiempo_act_fisica }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label>Objetivos de intervención</label> {{ form_AntAlimenticios.objetivo_intervencion }}
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" value="save" class="btn btn-warning pull-right">Registrar Anamnesis</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

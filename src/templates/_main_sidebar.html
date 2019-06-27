@@ -1,0 +1,145 @@
+{% extends 'adminlte/lib/_main_sidebar.html' %} {% block nav_links %}
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-calendar"></i>
+        <span>Agenda de atención</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+    </a>
+
+    <ul class="treeview-menu">
+        <li>
+            <a href="/agenda/ver_agenda/">
+                <i class="fa fa-calendar-check-o"></i> Visualizar agenda
+            </a>
+            <a href="/agenda/agendar_visita/">
+                <i class="fa fa-calendar-plus-o"></i> Agendar visita
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-group"></i>
+        <span>Gestión de pacientes</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+    </a>
+    <ul class="treeview-menu">
+        <li>
+            <a href="/paciente/buscar_paciente/">
+                <i class="fa fa-search"></i> Buscar paciente
+            </a>
+            <a href="/paciente/registro_paciente/">
+                <i class="fa fa-user-plus"></i> Registrar paciente
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-file-text"></i>
+        <span>Ficha clinica</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+    </a>
+    <ul class="treeview-menu">
+        <li>
+            <a href="/ficha_clinica/anamnesis/">
+                <i class="fa fa-file-text-o"></i> Anamnesis de paciente
+            </a>
+            <a href="/ficha_clinica/buscar_ficha/">
+                <i class="fa fa-files-o"></i> Buscar ficha clinica
+            </a>
+            <a href="/ficha_clinica/nueva_ficha/">
+                <i class="fa fa-file"></i> Nueva ficha clinica
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-list"></i>
+        <span>Registro de alimentos</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+    </a>
+    <ul class="treeview-menu">
+        <li>
+            <a href="/alimento/buscar_alimento/">
+                <i class="fa fa-search"></i> Buscar alimento
+            </a>
+            <a href="/alimento/registro_alimento">
+                <i class="fa fa-plus-square"></i> Ingresar nuevo alimento
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-list"></i>
+        <span>Registro de receta</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+    </a>
+    <ul class="treeview-menu">
+        <li>
+            <a href="/receta/buscar_receta/">
+                <i class="fa fa-search"></i> Buscar receta
+            </a>
+            <a href="/receta/registro_receta/">
+                <i class="fa fa-plus-square"></i> Ingresar nueva receta
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-list"></i>
+        <span>Registro de minutas</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+    </a>
+    <ul class="treeview-menu">
+        <li>
+            <a href="/minuta/buscar_minuta">
+                <i class="fa fa-search"></i> Buscar minuta
+            </a>
+            <a href="/minuta/registro_minuta">
+                <i class="fa fa-plus-square"></i> Ingresar nueva minuta
+            </a>
+        </li>
+    </ul>
+</li>
+{% if user.is_superuser or perms.Profesional.admin_permission or perms.Profesional.profesional_permission %}
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-list"></i>
+        <span>Administración de alumnos</span>
+        <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+                </span>
+    </a>
+    <ul class="treeview-menu">
+        <li>
+            <a href="/minuta/buscar_minuta">
+                <i class="fa fa-search"></i> Buscar minuta
+            </a>
+            <a href="/minuta/registro_minuta">
+                <i class="fa fa-plus-square"></i> Ingresar nueva minuta
+            </a>
+        </li>
+    </ul>
+</li>
+{% endif %} {% endblock nav_links %}

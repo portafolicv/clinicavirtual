@@ -1,0 +1,29 @@
+.header-landing
+{
+	height:600px;
+	background-color: red;
+	background-image: url(/static/img/image.jpg);
+	background-size: cover;
+}
+.btn-social
+{
+	transition: .3s ease-in-out;
+	color: grey;
+}
+.navbar
+{
+	background-color: red;
+}
+
+.fc-button 
+{
+	border: none;
+	color: white;
+	font-size: 10px !important;
+}
+
+.fc-center
+{
+	font-size: 7px;
+	border: none;
+}
